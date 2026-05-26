@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Greenhouse on Moss — Investor Overview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-deep:   #1a3a2a;
+      --green-mid:    #2d5a3d;
+      --green-light:  #4a8c5c;
+      --green-pale:   #c8e6c9;
+      --cream:        #f7f4ee;
+      --warm-white:   #fdfbf7;
+      --gold:         #c9a84c;
+      --gold-light:   #e8d5a0;
+      --charcoal:     #2c2c2c;
+      --text-mid:     #4a4a4a;
+      --text-light:   #6b6b6b;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--warm-white);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(26, 58, 42, 0.95);
+      backdrop-filter: blur(10px);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      color: #fff;
+      font-size: 1.15rem;
+      letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--gold); }
+    nav ul {
+      list-style: none;
+      display: flex; gap: 2.2rem;
+    }
+    nav ul li a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    nav ul li a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--green-deep) !important;
+      padding: 0.5rem 1.3rem;
+      border-radius: 2px;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--green-deep) !important; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(15,35,22,0.72) 0%, rgba(15,35,22,0.55) 60%, rgba(15,35,22,0.82) 100%),
+        url('https://images.unsplash.com/photo-1585518419759-7fe2e0fbf8a6?w=1600&q=80') center/cover no-repeat;
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 0 2rem;
+      max-width: 860px;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 0.35rem 1.1rem;
+      margin-bottom: 1.6rem;
+      border-radius: 1px;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 1.4rem;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.82);
+      max-width: 600px;
+      margin: 0 auto 2.4rem;
+      line-height: 1.75;
+      font-weight: 300;
+    }
+    .hero-btns {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--green-deep);
+      padding: 0.9rem 2.2rem;
+      font-weight: 600;
+      font-size: 0.88rem;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-outline {
+      border: 1.5px solid rgba(255,255,255,0.6);
+      color: #fff;
+      padding: 0.9rem 2.2rem;
+      font-weight: 500;
+      font-size: 0.88rem;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.1); }
+    .hero-stats {
+      position: relative; z-index: 2;
+      width: 100%;
+      display: flex; justify-content: center;
+      gap: 0;
+      margin-top: 0;
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(8px);
+    }
+    .hero-stat {
+      padding: 1.4rem 3rem;
+      border-right: 1px solid rgba(255,255,255,0.15);
+      text-align: center;
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      display: block;
+    }
+    .hero-stat .lbl {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.2rem;
+      display: block;
+    }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 6rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green-light);
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--green-deep);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+    .section-title em { font-style: italic; color: var(--green-light); }
+    .section-body {
+      font-size: 1rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+      max-width: 680px;
+    }
+    .divider {
+      width: 50px; height: 2px;
+      background: var(--gold);
+      margin: 1.2rem 0 2rem;
+    }
+
+    /* ── PROBLEM / VISION ── */
+    #problem { background: var(--green-deep); }
+    #problem .section-label { color: var(--gold-light); }
+    #problem .section-title { color: #fff; }
+    #problem .section-body { color: rgba(255,255,255,0.78); max-width: 100%; }
+    #problem .divider { background: var(--gold); }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+    .problem-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+      padding: 2.2rem;
+    }
+    .problem-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .problem-card p {
+      color: rgba(255,255,255,0.72);
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+    .stat-pill {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--green-deep);
+      font-weight: 700;
+      font-size: 0.82rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      margin-bottom: 0.8rem;
+    }
+
+    /* ── PHOTO GALLERY ── */
+    #gallery { background: var(--cream); padding: 4rem 0; }
+    .gallery-title-wrap {
+      text-align: center;
+      padding: 0 2rem 2.5rem;
+    }
+    .photo-strip {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 280px 280px;
+      gap: 0.5rem;
+      padding: 0 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .photo-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 3px;
+    }
+    .photo-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .photo-item:hover img { transform: scale(1.04); }
+    .photo-item.tall { grid-row: span 2; }
+    .photo-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 1rem 1.2rem;
+      background: linear-gradient(transparent, rgba(15,35,22,0.85));
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ── SPACES ── */
+    #spaces { background: var(--warm-white); }
+    .spaces-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .space-card {
+      background: var(--cream);
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.07);
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .space-card:hover {
+      box-shadow: 0 12px 40px rgba(26,58,42,0.12);
+      transform: translateY(-3px);
+    }
+    .space-card-img {
+      height: 200px;
+      overflow: hidden;
+    }
+    .space-card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .space-card:hover .space-card-img img { transform: scale(1.05); }
+    .space-card-body { padding: 1.8rem; }
+    .space-icon {
+      width: 42px; height: 42px;
+      background: var(--green-deep);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .space-icon svg { width: 20px; height: 20px; stroke: #fff; fill: none; stroke-width: 1.5; }
+    .space-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--green-deep);
+      margin-bottom: 0.7rem;
+    }
+    .space-card p {
+      color: var(--text-mid);
+      font-size: 0.92rem;
+      line-height: 1.75;
+    }
+
+    /* ── MARKET ── */
+    #market { background: var(--cream); }
+    .market-numbers {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .market-num {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.07);
+      border-radius: 4px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: box-shadow 0.25s;
+    }
+    .market-num:hover { box-shadow: 0 6px 24px rgba(26,58,42,0.1); }
+    .market-num .big {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--green-deep);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .market-num .lbl {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .market-why {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+    .market-why-card {
+      background: var(--green-deep);
+      border-radius: 4px;
+      padding: 2rem 2.2rem;
+    }
+    .market-why-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+    .market-why-card p {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.92rem;
+      line-height: 1.75;
+    }
+
+    /* ── FINANCIALS ── */
+    #financials { background: var(--green-deep); }
+    #financials .section-label { color: var(--gold-light); }
+    #financials .section-title { color: #fff; }
+    #financials .section-body { color: rgba(255,255,255,0.75); }
+    #financials .divider { background: var(--gold); }
+    .fin-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .fin-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 4px;
+      padding: 2rem;
+      text-align: center;
+      transition: background 0.25s;
+    }
+    .fin-card:hover { background: rgba(255,255,255,0.11); }
+    .fin-card .yr {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+    .fin-card .amt {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: #fff;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .fin-card .note {
+      font-size: 0.84rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.65;
+    }
+    .fin-highlight {
+      margin-top: 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .fin-hi-item {
+      background: var(--gold);
+      border-radius: 4px;
+      padding: 1.6rem 2rem;
+      text-align: center;
+    }
+    .fin-hi-item .hi-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--green-deep);
+      display: block;
+    }
+    .fin-hi-item .hi-lbl {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--green-deep);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.3rem;
+    }
+    .revenue-mix {
+      margin-top: 2.5rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+      padding: 2rem 2.5rem;
+    }
+    .revenue-mix h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: #fff;
+      margin-bottom: 1.5rem;
+    }
+    .mix-bar-wrap { margin-bottom: 1rem; }
+    .mix-bar-label {
+      display: flex; justify-content: space-between;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 0.35rem;
+    }
+    .mix-bar-track {
+      height: 8px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .mix-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: var(--gold);
+      transition: width 1s ease;
+    }
+
+    /* ── BALANCE SHEET ── */
+    .balance-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .bal-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 4px;
+      padding: 2rem;
+      text-align: center;
+    }
+    .bal-card h4 {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+    .bal-card .bal-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #fff;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .bal-card p {
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.58);
+      line-height: 1.6;
+    }
+
+    /* ── MEMBERSHIPS ── */
+    #memberships { background: var(--warm-white); }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .plan-card {
+      border: 1.5px solid rgba(0,0,0,0.09);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .plan-card:hover {
+      box-shadow: 0 12px 40px rgba(26,58,42,0.12);
+      transform: translateY(-4px);
+    }
+    .plan-card.featured {
+      border-color: var(--green-light);
+      box-shadow: 0 4px 24px rgba(74,140,92,0.18);
+    }
+    .plan-header {
+      background: var(--green-deep);
+      padding: 1.8rem 2rem 1.5rem;
+      text-align: center;
+    }
+    .plan-card.featured .plan-header { background: var(--green-light); }
+    .plan-header h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+    .plan-header .plan-age {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.05em;
+    }
+    .plan-price {
+      background: var(--cream);
+      padding: 1.4rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+    .plan-price .price {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--green-deep);
+    }
+    .plan-price .mo {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      margin-left: 0.2rem;
+    }
+    .plan-features {
+      padding: 1.5rem 2rem;
+      background: #fff;
+    }
+    .plan-features p {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+    }
+
+    /* ── HOA PARTNERSHIPS ── */
+    #hoa { background: var(--cream); }
+    .hoa-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .hoa-card {
+      background: #fff;
+      border-radius: 4px;
+      padding: 2rem;
+      border-top: 4px solid var(--green-light);
+      transition: box-shadow 0.25s;
+    }
+    .hoa-card:nth-child(2) { border-top-color: var(--green-deep); }
+    .hoa-card:nth-child(3) { border-top-color: var(--gold); }
+    .hoa-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+    .hoa-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--green-deep);
+      margin-bottom: 0.6rem;
+    }
+    .hoa-card p {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+    }
+    .hoa-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--green-pale);
+      color: var(--green-deep);
+      padding: 0.25rem 0.7rem;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+
+    /* ── WHY NOW ── */
+    #whynow { background: var(--warm-white); }
+    .whynow-cols {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+    .whynow-img {
+      border-radius: 4px;
+      overflow: hidden;
+      height: 480px;
+    }
+    .whynow-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .whynow-list { }
+    .whynow-item {
+      display: flex;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .whynow-num {
+      flex-shrink: 0;
+      width: 36px; height: 36px;
+      background: var(--green-deep);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .whynow-item h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--green-deep);
+      margin-bottom: 0.35rem;
+    }
+    .whynow-item p {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--green-deep);
+      text-align: center;
+    }
+    #contact .section-title { color: #fff; }
+    #contact .section-label { color: var(--gold-light); }
+    #contact .section-body {
+      color: rgba(255,255,255,0.75);
+      margin: 0 auto 2.5rem;
+    }
+    #contact .divider { margin: 1rem auto 1.8rem; }
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+    .form-field label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+    }
+    .form-field input,
+    .form-field textarea,
+    .form-field select {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 2px;
+      padding: 0.8rem 1rem;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .form-field input::placeholder,
+    .form-field textarea::placeholder {
+      color: rgba(255,255,255,0.35);
+    }
+    .form-field input:focus,
+    .form-field textarea:focus,
+    .form-field select:focus {
+      border-color: var(--gold);
+    }
+    .form-field select option { background: var(--green-deep); color: #fff; }
+    .form-field textarea { resize: vertical; min-height: 110px; }
+    .form-submit {
+      width: 100%;
+      background: var(--gold);
+      color: var(--green-deep);
+      border: none;
+      padding: 1rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+      font-family: 'Inter', sans-serif;
+    }
+    .form-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .contact-alt {
+      margin-top: 2.5rem;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+    }
+    .contact-alt a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    .contact-alt a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0d1f15;
+      padding: 2rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.95rem;
+    }
+    .footer-logo span { color: var(--gold); }
+    .footer-note {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.35);
+      max-width: 480px;
+      line-height: 1.6;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards;
+    }
+    .delay-1 { animation-delay: 0.15s; }
+    .delay-2 { animation-delay: 0.3s; }
+    .delay-3 { animation-delay: 0.45s; }
+    .delay-4 { animation-delay: 0.6s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav ul { display: none; }
+      .problem-grid, .spaces-grid, .plans-grid, .hoa-grid,
+      .fin-grid, .fin-highlight, .balance-row, .market-numbers,
+      .market-why { grid-template-columns: 1fr 1fr; }
+      .photo-strip { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .photo-item.tall { grid-row: span 1; }
+      .whynow-cols { grid-template-columns: 1fr; }
+      .whynow-img { height: 300px; }
+    }
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.5rem; }
+      section { padding: 4rem 1.2rem; }
+      .problem-grid, .spaces-grid, .plans-grid, .hoa-grid,
+      .fin-grid, .fin-highlight, .balance-row, .market-numbers,
+      .market-why { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .photo-strip { grid-template-columns: 1fr; }
+      .hero-stats { flex-wrap: wrap; }
+      .hero-stat { flex: 0 0 50%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">The <span>Greenhouse</span> on Moss</div>
+  <ul>
+    <li><a href="#problem">Vision</a></li>
+    <li><a href="#spaces">Spaces</a></li>
+    <li><a href="#financials">Financials</a></li>
+    <li><a href="#memberships">Membership</a></li>
+    <li><a href="#contact" class="nav-cta">Connect With Us</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow fade-up">Investment Opportunity · Lafayette, Louisiana</div>
+    <h1 class="hero-title fade-up delay-1">
+      Where <em>Community</em><br>Comes Alive
+    </h1>
+    <p class="hero-sub fade-up delay-2">
+      Acadiana's first teen-focused membership clubhouse — a landmark greenhouse estate reimagined as a safe, vibrant destination for the next generation.
+    </p>
+    <div class="hero-btns fade-up delay-3">
+      <a href="#financials" class="btn-primary">View Investment Case</a>
+      <a href="#contact" class="btn-outline">Request a Meeting</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="num">$644K</span>
+      <span class="lbl">Year 3 Revenue</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num">18–22%</span>
+      <span class="lbl">Target IRR</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num">59%</span>
+      <span class="lbl">NOI Margin (Yr 3)</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num">3 Acres</span>
+      <span class="lbl">Historic Estate</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num">$54B</span>
+      <span class="lbl">U.S. Rec Market</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM / VISION -->
+<section id="problem">
+  <div class="section-inner">
+    <div class="section-label">The Opportunity</div>
+    <h2 class="section-title">A Gap Every Parent<br>Knows Too Well</h2>
+    <div class="divider"></div>
+    <p class="section-body">
+      Teens in Lafayette and Carencro have nowhere to go. Too old for children's programming, too young for nightlife — this is the forgotten window. We're filling it with something truly irreplaceable.
+    </p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="stat-pill">The Problem</div>
+        <h3>No Dedicated Space for Teens</h3>
+        <p>
+          The WHO identifies teens (ages 13–17) as the <strong style="color:#fff">loneliest age group globally (20.9%)</strong>. In Louisiana, <strong style="color:#fff">26% of juvenile crime</strong> occurs between 2–6 PM — the after-school window. Youth recreation costs have surged <strong style="color:#fff">46% since 2019</strong>, pricing out many families.
+        </p>
+      </div>
+      <div class="problem-card">
+        <div class="stat-pill" style="background: rgba(201,168,76,0.25); color: var(--gold-light);">Our Solution</div>
+        <h3>A Membership Home Built for Them</h3>
+        <p>
+          A climate-controlled greenhouse event hall, restored pool, gaming lounge, botanical gardens, café, and structured programming — designed specifically for teens ages 13–24 and their families. HOA partnership packages extend community-wide access at a fraction of the cost of building private amenities.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO GALLERY -->
+<section id="gallery">
+  <div class="gallery-title-wrap">
+    <div class="section-label" style="text-align:center;">The Venue</div>
+    <h2 class="section-title" style="text-align:center; margin-bottom:0;">4834 Moss Street · Lafayette, LA</h2>
+  </div>
+  <div class="photo-strip">
+    <!-- Main hero image: greenhouse lounge -->
+    <div class="photo-item tall">
+      <img src="https://images.unsplash.com/photo-1585518419759-7fe2e0fbf8a6?w=800&q=80" alt="Greenhouse Hall"/>
+      <div class="photo-label">The Grand Hall — Greenhouse Event Space</div>
+    </div>
+    <!-- Wedding / event setup -->
+    <div class="photo-item">
+      <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80" alt="Event Setup"/>
+      <div class="photo-label">Small Wedding & Event Venue</div>
+    </div>
+    <!-- Café bar -->
+    <div class="photo-item">
+      <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=600&q=80" alt="Café"/>
+      <div class="photo-label">Moss Street Coffee Co. Café</div>
+    </div>
+    <!-- Pool -->
+    <div class="photo-item">
+      <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80" alt="Pool"/>
+      <div class="photo-label">Pool & Lounge Area</div>
+    </div>
+    <!-- Community nights -->
+    <div class="photo-item">
+      <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80" alt="Events"/>
+      <div class="photo-label">Networking & Community Nights</div>
+    </div>
+  </div>
+</section>
+
+<!-- SPACES -->
+<section id="spaces">
+  <div class="section-inner">
+    <div class="section-label">Our Amenities</div>
+    <h2 class="section-title">Four Distinct <em>Destinations</em><br>Under One Roof</h2>
+    <div class="divider"></div>
+    <p class="section-body">
+      Spanning a nearly 3-acre historic estate, The Greenhouse on Moss offers a curated collection of spaces — each designed to serve different moods, ages, and occasions.
+    </p>
+    <div class="spaces-grid">
+      <div class="space-card">
+        <div class="space-card-img">
+          <img src="https://images.unsplash.com/photo-1601684882858-a40e4c71c741?w=700&q=80" alt="Greenhouse Hall"/>
+        </div>
+        <div class="space-card-body">
+          <div class="space-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>The Grand Hall</h3>
+          <p>A landmark climate-controlled greenhouse event space featuring a café bar, botanical gardens, movie nights, live acoustic music, and private event hosting. The crown jewel of the estate.</p>
+        </div>
+      </div>
+      <div class="space-card">
+        <div class="space-card-img">
+          <img src="https://images.unsplash.com/photo-1538032746644-0212e812a9e7?w=700&q=80" alt="Game House"/>
+        </div>
+        <div class="space-card-body">
+          <div class="space-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3>The Game House</h3>
+          <p>Billiards, ping pong, foosball, console and PC gaming lounge, board game library, and a quiet homework nook — a hangout teens will actually want to come to, every day.</p>
+        </div>
+      </div>
+      <div class="space-card">
+        <div class="space-card-img">
+          <img src="https://images.unsplash.com/photo-1560089168-6516081f5bf1?w=700&q=80" alt="Pool"/>
+        </div>
+        <div class="space-card-body">
+          <div class="space-icon">
+            <svg viewBox="0 0 24 24"><path d="M2 12h20M2 18c2.5-2 5-2 7.5 0s5 2 7.5 0M2 6c2.5-2 5-2 7.5 0s5 2 7.5 0"/></svg>
+          </div>
+          <h3>Pool & Outdoor Recreation</h3>
+          <p>Restored pool, sun deck, loungers, splash pad, and supervised swim sessions. Friday night pool parties and outdoor summer programming make this the go-to summer destination.</p>
+        </div>
+      </div>
+      <div class="space-card">
+        <div class="space-card-img">
+          <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=700&q=80" alt="Events"/>
+        </div>
+        <div class="space-card-body">
+          <div class="space-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3>Events & Programming</h3>
+          <p>Birthday parties, HOA community events, speed dating nights, family movie screenings, seasonal programming, and 8-week summer camp sessions — a full calendar, year-round.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET OPPORTUNITY -->
+<section id="market">
+  <div class="section-inner">
+    <div class="section-label">Market Opportunity</div>
+    <h2 class="section-title">A $54 Billion Market.<br><em>Zero</em> Local Competition.</h2>
+    <div class="divider"></div>
+    <p class="section-body">
+      Lafayette Parish's 250,000 residents have no dedicated teen recreation venue. The Greenhouse on Moss enters a growing market with an irreplaceable physical asset and no direct competitors.
+    </p>
+    <div class="market-numbers">
+      <div class="market-num">
+        <span class="big">$54B</span>
+        <span class="lbl">U.S. Recreation Market</span>
+      </div>
+      <div class="market-num">
+        <span class="big">6.8%</span>
+        <span class="lbl">Annual Market Growth</span>
+      </div>
+      <div class="market-num">
+        <span class="big">250K</span>
+        <span class="lbl">Lafayette Parish Population</span>
+      </div>
+      <div class="market-num">
+        <span class="big">#1</span>
+        <span class="lbl">Gen Z Driving Demand</span>
+      </div>
+    </div>
+    <div class="market-why">
+      <div class="market-why-card">
+        <h4>Why Lafayette, Why Now</h4>
+        <p>Lafayette is Acadiana's cultural and economic hub, with a growing young population and zero teen-focused membership venues. The after-school gap is acute, well-documented, and monetizable. Youth recreation demand is surging as costs price families out of alternatives.</p>
+      </div>
+      <div class="market-why-card">
+        <h4>Competitive Moat</h4>
+        <p>Municipal parks offer no membership identity. Movie theaters and trampoline parks are pay-per-visit with no community. Church youth groups are congregation-limited. The Greenhouse on Moss is the only year-round, climate-controlled, membership-based destination designed exclusively for teens ages 13–24.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINANCIALS -->
+<section id="financials">
+  <div class="section-inner">
+    <div class="section-label">Financial Overview</div>
+    <h2 class="section-title">Strong Fundamentals.<br>Compelling Returns.</h2>
+    <div class="divider"></div>
+    <p class="section-body">
+      Underpinned by recurring membership revenue, diversified income streams, and a real estate asset, The Greenhouse on Moss is structured for durable, cash-flowing growth.
+    </p>
+
+    <div class="fin-grid">
+      <div class="fin-card">
+        <div class="yr">Year 1</div>
+        <span class="amt">$288K</span>
+        <div class="note">At 60% occupancy. Revised membership pricing with early-adopter members and first HOA partnerships coming online.</div>
+      </div>
+      <div class="fin-card">
+        <div class="yr">Year 2</div>
+        <span class="amt">$445K</span>
+        <div class="note">Growing to 75% occupancy with 3–5 HOA partnerships established and events programming at full capacity.</div>
+      </div>
+      <div class="fin-card">
+        <div class="yr">Year 3</div>
+        <span class="amt">$644K</span>
+        <div class="note">Stabilized at 85% occupancy. NOI margin of 59%. A strong, cash-flowing asset with appreciation upside.</div>
+      </div>
+    </div>
+
+    <div class="fin-highlight">
+      <div class="fin-hi-item">
+        <span class="hi-num">18–22%</span>
+        <div class="hi-lbl">Target Investor IRR</div>
+      </div>
+      <div class="fin-hi-item">
+        <span class="hi-num">59%</span>
+        <div class="hi-lbl">NOI Margin (Year 3)</div>
+      </div>
+      <div class="fin-hi-item">
+        <span class="hi-num">5-Year</span>
+        <div class="hi-lbl">Investment Hold Period</div>
+      </div>
+    </div>
+
+    <div class="revenue-mix">
+      <h4>Year 3 Revenue Mix</h4>
+      <div class="mix-bar-wrap">
+        <div class="mix-bar-label"><span>Memberships</span><span>44%</span></div>
+        <div class="mix-bar-track"><div class="mix-bar-fill" style="width:44%"></div></div>
+      </div>
+      <div class="mix-bar-wrap">
+        <div class="mix-bar-label"><span>Events & Summer Camp</span><span>23%</span></div>
+        <div class="mix-bar-track"><div class="mix-bar-fill" style="width:23%; opacity:0.85"></div></div>
+      </div>
+      <div class="mix-bar-wrap">
+        <div class="mix-bar-label"><span>HOA Partnerships</span><span>17%</span></div>
+        <div class="mix-bar-track"><div class="mix-bar-fill" style="width:17%; opacity:0.7"></div></div>
+      </div>
+      <div class="mix-bar-wrap">
+        <div class="mix-bar-label"><span>Café, Day Passes & Sponsorships</span><span>16%</span></div>
+        <div class="mix-bar-track"><div class="mix-bar-fill" style="width:16%; opacity:0.55"></div></div>
+      </div>
+    </div>
+
+    <div class="balance-row">
+      <div class="bal-card">
+        <h4>Total Assets</h4>
+        <span class="bal-num">$800K</span>
+        <p>Property ($175K) + renovations & improvements ($500K) + equipment ($45K) + cash reserves ($80K)</p>
+      </div>
+      <div class="bal-card">
+        <h4>Liabilities</h4>
+        <span class="bal-num">$450K</span>
+        <p>SBA 504 loan covering property acquisition and major construction costs</p>
+      </div>
+      <div class="bal-card">
+        <h4>Equity</h4>
+        <span class="bal-num">$350K</span>
+        <p>Investor capital contributions + retained earnings from operations</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERSHIPS -->
+<section id="memberships">
+  <div class="section-inner">
+    <div class="section-label">Membership Plans</div>
+    <h2 class="section-title">Recurring Revenue<br>from Day One</h2>
+    <div class="divider"></div>
+    <p class="section-body">
+      Three membership tiers create predictable, subscription-based income — the backbone of long-term financial stability. Members get full access; investors get consistent cash flow.
+    </p>
+    <div class="plans-grid">
+      <div class="plan-card">
+        <div class="plan-header">
+          <h3>Teen Membership</h3>
+          <div class="plan-age">Ages 13–17</div>
+        </div>
+        <div class="plan-price">
+          <span class="price">$60</span><span class="mo">/month</span>
+        </div>
+        <div class="plan-features">
+          <p>Full access to the pool, game house, greenhouse, botanical gardens, and all events and programming. Designed for Acadiana's primary teen demographic.</p>
+        </div>
+      </div>
+      <div class="plan-card featured">
+        <div class="plan-header">
+          <h3>Family Plan</h3>
+          <div class="plan-age">Up to 4 Members</div>
+        </div>
+        <div class="plan-price">
+          <span class="price">$149</span><span class="mo">/month</span>
+        </div>
+        <div class="plan-features">
+          <p>All-access for the whole family with priority event booking. The highest-value plan for household revenue and long-term member retention.</p>
+        </div>
+      </div>
+      <div class="plan-card">
+        <div class="plan-header">
+          <h3>Young Adult</h3>
+          <div class="plan-age">Ages 18–24</div>
+        </div>
+        <div class="plan-price">
+          <span class="price">$75</span><span class="mo">/month</span>
+        </div>
+        <div class="plan-features">
+          <p>Full access to all amenities plus one monthly guest pass. Grows the community beyond teens and drives café, event, and referral revenue.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOA PARTNERSHIPS -->
+<section id="hoa">
+  <div class="section-inner">
+    <div class="section-label">HOA Partnerships</div>
+    <h2 class="section-title">B2B Revenue at<br><em>Community Scale</em></h2>
+    <div class="divider"></div>
+    <p class="section-body">
+      HOA partnership packages let entire neighborhoods access The Greenhouse on Moss at a fraction of what it would cost to build private amenities — delivering bulk, contracted revenue for investors.
+    </p>
+    <div class="hoa-grid">
+      <div class="hoa-card">
+        <div class="hoa-badge">Bronze</div>
+        <h3>Entry Access Package</h3>
+        <p>Community-level access for HOA residents during designated hours. Ideal for smaller neighborhoods seeking a low-cost upgrade to their amenity offerings.</p>
+      </div>
+      <div class="hoa-card">
+        <div class="hoa-badge" style="background: var(--green-pale);">Silver</div>
+        <h3>Community Partner Package</h3>
+        <p>Expanded access plus reserved event bookings and priority scheduling for HOA community nights, family movie screenings, and seasonal events.</p>
+      </div>
+      <div class="hoa-card">
+        <div class="hoa-badge" style="background: var(--gold-light); color: #7a5c00;">Gold</div>
+        <h3>Full Community Access</h3>
+        <p>Unlimited access for all HOA residents with dedicated programming, naming rights opportunities, and quarterly HOA board coordination — a true community partnership.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY NOW -->
+<section id="whynow">
+  <div class="section-inner">
+    <div class="whynow-cols">
+      <div class="whynow-img">
+        <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=800&q=80" alt="Greenhouse Estate"/>
+      </div>
+      <div class="whynow-list">
+        <div class="section-label">Why Invest</div>
+        <h2 class="section-title">Five Reasons<br>This Wins</h2>
+        <div class="divider"></div>
+        <div class="whynow-item">
+          <div class="whynow-num">01</div>
+          <div>
+            <h4>Irreplaceable Physical Asset</h4>
+            <p>A nearly 3-acre historic estate with a landmark greenhouse cannot be replicated. The property appreciates alongside the business.</p>
+          </div>
+        </div>
+        <div class="whynow-item">
+          <div class="whynow-num">02</div>
+          <div>
+            <h4>Recurring Subscription Revenue</h4>
+            <p>Memberships generate predictable monthly cash flow — not dependent on event bookings or one-time visits.</p>
+          </div>
+        </div>
+        <div class="whynow-item">
+          <div class="whynow-num">03</div>
+          <div>
+            <h4>Diversified Income Streams</h4>
+            <p>Memberships, HOA contracts, event bookings, café, day passes, and sponsorships — no single point of revenue failure.</p>
+          </div>
+        </div>
+        <div class="whynow-item">
+          <div class="whynow-num">04</div>
+          <div>
+            <h4>Unmet Community Need</h4>
+            <p>There is no direct competitor in the Lafayette market. The Greenhouse on Moss enters as the category creator, not a challenger.</p>
+          </div>
+        </div>
+        <div class="whynow-item">
+          <div class="whynow-num">05</div>
+          <div>
+            <h4>Real Estate + Operating Returns</h4>
+            <p>Investors benefit from both operating cash flow distributions and property appreciation — a dual-return structure over a 5-year hold.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Ready to Be Part<br>of Something Lasting?</h2>
+    <div class="divider"></div>
+    <p class="section-body">
+      We're currently accepting introductory meetings with accredited investors. Fill out the form below and we'll be in touch within 48 hours.
+    </p>
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-field">
+          <label>First Name</label>
+          <input type="text" placeholder="Jane" required/>
+        </div>
+        <div class="form-field">
+          <label>Last Name</label>
+          <input type="text" placeholder="Smith" required/>
+        </div>
+      </div>
+      <div class="form-field">
+        <label>Email Address</label>
+        <input type="email" placeholder="jane@example.com" required/>
+      </div>
+      <div class="form-field">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+1 (555) 000-0000"/>
+      </div>
+      <div class="form-field">
+        <label>Investment Interest</label>
+        <select>
+          <option value="">Select a range...</option>
+          <option>Under $25,000</option>
+          <option>$25,000 – $50,000</option>
+          <option>$50,000 – $100,000</option>
+          <option>$100,000 – $250,000</option>
+          <option>$250,000+</option>
+          <option>I'd like to learn more first</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Message (Optional)</label>
+        <textarea placeholder="Tell us about your investment background or any questions you have..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send My Introduction</button>
+    </form>
+    <div class="contact-alt">
+      Prefer email? Reach us directly at <a href="mailto:hello@thegreenhouseonmoss.com">hello@thegreenhouseonmoss.com</a><br/>
+      <span style="margin-top:0.4rem; display:block;">thegreenhouseonmoss.com · 4834 Moss Street, Lafayette, LA</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">The <span>Greenhouse</span> on Moss · Lafayette, LA</div>
+  <div class="footer-note">
+    This website is for informational purposes only and does not constitute an offer or solicitation to invest. All financial projections are forward-looking estimates. Past performance is not indicative of future results. Please consult your financial advisor before making investment decisions.
+  </div>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = '✓ Sent! We'll be in touch within 48 hours.';
+    btn.style.background = '#4a8c5c';
+    btn.style.color = '#fff';
+    btn.disabled = true;
+  }
+
+  // Intersection Observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.space-card, .market-num, .fin-card, .plan-card, .hoa-card, .whynow-item, .problem-card, .bal-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
